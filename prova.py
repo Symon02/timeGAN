@@ -2,6 +2,7 @@ import numpy as np
 
 from time_gan_tensorflow.model import TimeGAN
 from time_gan_tensorflow.plots import plot
+from JSdivergence import jensen_shannon_divergence
 
 # Generate the data
 N = 50      # number of time series
@@ -27,7 +28,7 @@ model = TimeGAN(
 )
 
 model.fit(
-    epochs=50,
+    epochs=500,
     verbose=True
 )
 
@@ -37,6 +38,8 @@ x_hat = model.reconstruct(x=x_test)
 # Generate the synthetic data
 x_sim = model.simulate(samples=len(x_test))
 
+print("La divergenza di Jensen-Shannon tra la serie reale e quella generata è: " + jensen_shannon_divergence(x_test, x_sim))
+
 # Plot the actual, reconstructed and synthetic data
 fig = plot(actual=x_test, reconstructed=x_hat, synthetic=x_sim)
-fig.write_image('results2.png', scale=4, height=900, width=700)
+fig.write_image('resultsProva.png', scale=4, height=900, width=700)

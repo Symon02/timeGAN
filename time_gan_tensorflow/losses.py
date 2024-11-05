@@ -7,7 +7,7 @@ def mean_squared_error(y_true, y_pred):
     '''
     mse_loss = tf.keras.losses.MeanSquaredError()
     loss =mse_loss(y_true=tf.expand_dims(y_true, axis=-1), y_pred=tf.expand_dims(y_pred, axis=-1))
-    return loss
+    return tf.reduce_mean(tf.reduce_sum(loss))
 
 
 @tf.function

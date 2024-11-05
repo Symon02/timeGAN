@@ -155,7 +155,7 @@ def plot(actual, reconstructed, synthetic):
         )
         
         fig.update_yaxes(
-            range=[0.9 * np.min(actual), 1.1 * np.max(actual)],
+            range=[1.1 * np.min(actual), 1.1 * np.max(actual)],
             title='Value',
             color='#424a53',
             tickfont=dict(
